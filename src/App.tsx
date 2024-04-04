@@ -1,25 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import {DisplayTags, SelectBox} from "./components";
+import { Container } from '@mui/material'
 import './App.css';
 
 function App() {
+  const [sortType, setSortType] = useState('popular');
+  const [sortOrder, setSortOrder] = useState('desc');
+  const [pageSize, setPageSize] = useState('100');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container className="App">
+      <SelectBox setSortType={setSortType} setSortOrder={setSortOrder} setPageSize={setPageSize} sortType={sortType} sortOrder={sortOrder}/>
+      <DisplayTags sortType={sortType} sortOrder={sortOrder} pageSize={pageSize}/>
+    </Container>
   );
 }
 
